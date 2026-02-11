@@ -45,4 +45,12 @@ public class Player : MonoBehaviour
         Vector2 move = rb.position + moveInput * speed * Time.deltaTime;
         rb.MovePosition(move);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.CompareTag("Resucer"))
+        {
+            rb.AddForce(moveInput * 0.02f, ForceMode2D.Impulse);
+        }
+    }
 }
